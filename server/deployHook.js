@@ -3,9 +3,8 @@ const crypto = require('crypto');
 const exec = require('child_process').exec;
 const deployHook = express.Router();
 
-function pullFromMaster() {
-  const repo = "~/moto42/m42-charts/";
-  exec('cd ' + repo + ' && git pull');
+function pullFromMaster(repoUrl) {
+  exec(`git checkout -- ./ && git pull -X theirs ${repoUrl} glitch && refresh`);
 };
 
 function _post(req,res) {
@@ -14,7 +13,8 @@ function _post(req,res) {
   
   if(auth !== sig) res.status(401).send('Not Authorized');
   else {
-    pullFromMaster();
+    pullFromMaster(request.body.repository.git_url);
+    res.status(200).send("Pulling from repo");
   };
 };
 
