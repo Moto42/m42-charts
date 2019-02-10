@@ -13,7 +13,7 @@ function _post(req,res) {
   
   if(
     auth !== sig &&
-    req.body.refs === "refs/heads/glitch"
+    req.body.ref === "refs/heads/glitch"
   ) res.status(401).send('Not Authorized');
   else {
     pullFromMaster(req.body.repository.git_url);
