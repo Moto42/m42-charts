@@ -8,6 +8,12 @@ To make this work, you will have to do the following...
   set the following values as environmental variables...
     GIT_SECRET = This should be the same as the SECRET you gave your webhook.
     REPO_BRANCH = This should equal the name of the branch you are pulling from.
+Now you can add this router to your server with just...
+  const deployHook = require('WHereever you put it');
+  `app.use(deployHook)'
+  
+NOTE: This code is reliant upon body parser. 
+So `npm install body-parser` if you haven't already.
 */
 
 
@@ -15,6 +21,9 @@ const express = require('express');
 const crypto = require('crypto');
 const exec = require('child_process').exec;
 const deployHook = express.Router();
+const bodyParser = require('body-parser');
+
+deployHook.use(bodyParser.json());
 
 function pullFromMaster(repoUrl) {
   exec(`git checkout -- ./ && git pull -X theirs ${repoUrl} glitch && refresh`);
