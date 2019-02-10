@@ -11,9 +11,12 @@ function _post(req,res) {
   const auth = req.headers['x-hub-signature'];
   const sig = "sha1=" + crypto.createHmac('sha1', process.env.SECRET).update(JSON.stringify(req.body)).digest('hex');
   
-  if(auth !== sig) res.status(401).send('Not Authorized');
+  if(
+    auth !== sig &&
+    req.body.refs === "refs/heads/glitch"
+  ) res.status(401).send('Not Authorized');
   else {
-    pullFromMaster(request.body.repository.git_url);
+    pullFromMaster(req.body.repository.git_url);
     res.status(200).send("Pulling from repo");
   };
 };
