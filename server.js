@@ -17,11 +17,6 @@ app.use(bodyParser.json());
 
 app.use('/deployhook', deployHook);
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
-});
-
 // listen for requests :)
 const listener = app.listen(
   process.env.PORT,
