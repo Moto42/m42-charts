@@ -23,11 +23,11 @@ app.get('/', function (request, response) {
 });
 
 // listen for requests :)
-app.listen(
+const listener = app.listen(
   process.env.PORT,
   function () {
     console.log('Your app is listening on port ' + process.env.PORT);
   }
 );
 
-module.exports = app;
+module.exports = listener;
