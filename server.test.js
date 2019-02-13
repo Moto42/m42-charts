@@ -14,16 +14,14 @@ afterEach(() => {
 });
 
 describe('Static content delivery', () => {
-  test('status 200 for content found and delivered', async (done) => {
+  test('status 200 for content found and delivered', async () => {
     await request(app)
       .get('/')
       .expect(200);
-    done();
   });
-  test('status 404 for content not found', async (done) => {
+  test('status 404 for content not found', async () => {
     await request(app)
       .get('/404')
       .expect(404);
-    done();
   });
 });
