@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "jest --coverage --detectOpenHandles",
-    "testW": "jest --coverage --detectOpenHandles --watchAll"
+    "watch": "jest --coverage --detectOpenHandles --watchAll"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
