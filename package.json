@@ -8,8 +8,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "jest --coverage --detectOpenHandles",
-    "watch": "jest --coverage --detectOpenHandles --watchAll"
+    "devserv": "set PORT=1010&& cls&&node server.js",
+    "test": "cls&& jest --coverage --detectOpenHandles",
+    "watch": "cls&& jest --coverage --detectOpenHandles --watchAll"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
